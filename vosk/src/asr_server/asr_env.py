@@ -11,6 +11,7 @@ class ASREnv:
     ip_addr: str            # VOSK-server IP address
     port: int               # VOSK-server IP port
     model_path: str         # VOSK model directory name
+    vosk_cert_file: str     # VOSK certificate file in PEM format
     samplerate: float       # VOSK sample rate
     max_alternatives: int
     max_workers: Optional[int]
@@ -29,7 +30,8 @@ def get_env() -> ASREnv:
     env = ASREnv(
         ip_addr=os.environ.get("VOSK_SERVER_IP_ADDR", "0.0.0.0"),
         port=int(os.environ.get("VOSK_SERVER_PORT", 2700)),
-        model_path=os.environ.get("VOSK_MODEL_DIR", "../../../model"),
+        model_path=os.environ.get("VOSK_MODEL_PATH", "../../model"),
+        vosk_cert_file=os.environ.get("VOSK_CERT_FILE"),
         samplerate=float(os.environ.get("VOSK_SAMPLERATE", 41000)),
         max_alternatives=int(os.environ.get("VOSK_ALTERNATIVES", 0)),
         max_workers=max_workers_number,

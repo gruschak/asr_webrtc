@@ -12,8 +12,10 @@ services:
     environment:
       - VOSK_SERVER_IP_ADDR=${VOSK_SERVER_IP_ADDR}
       - VOSK_SERVER_PORT=${VOSK_SERVER_PORT}
-      - VOSK_MODEL_DIR=${VOSK_MODEL_DIR}
+      - VOSK_MODEL_PATH=${VOSK_MODEL_PATH}
+      - VOSK_CERT_FILE = ${VOSK_CERT_FILE}
       - VOSK_SAMPLERATE=${VOSK_SAMPLERATE}
       - VOSK_ALTERNATIVES=${VOSK_ALTERNATIVES}
       - VOSK_MAX_WORKERS=${VOSK_MAX_WORKERS:-0}
+
     command: python ./asr_server/asr_server.py

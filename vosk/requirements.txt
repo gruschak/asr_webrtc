@@ -1,0 +1,4 @@
+vosk==0.3.30
+aiortc==1.2.1
+aiohttp==3.7.4.post0
+aiorpc==0.1.7

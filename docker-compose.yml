@@ -1,0 +1,19 @@
+version: "3.5"
+
+services:
+
+  vosk-server:
+    build: ./vosk
+    restart: "no"
+    volumes:
+      - ./vosk/src:/app
+    ports:
+      - ${VOSK_SERVER_PORT}:${VOSK_SERVER_PORT}
+    environment:
+      - VOSK_SERVER_IP_ADDR=${VOSK_SERVER_IP_ADDR}
+      - VOSK_SERVER_PORT=${VOSK_SERVER_PORT}
+      - VOSK_MODEL_DIR=${VOSK_MODEL_DIR}
+      - VOSK_SAMPLERATE=${VOSK_SAMPLERATE}
+      - VOSK_ALTERNATIVES=${VOSK_ALTERNATIVES}
+      - VOSK_MAX_WORKERS=${VOSK_MAX_WORKERS:-0}
+    command: python ./asr_server/asr_server.py
